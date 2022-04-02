@@ -3,7 +3,8 @@ import { useState,useEffect } from "react";
 const UsersPage = () => {
     const [Data, setData] = useState([]);
     const fetchData = async () => {
-        const url = "http://localhost:9000/getUsers";
+        // const url = "http://localhost:9000/getUsers";
+        const url = "https://infinite-sands-08332.herokuapp.com/getUsers";
         const response =await fetch(url);
         await response.json().then((data) => {
             setData(data); console.log(data);

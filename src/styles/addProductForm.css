@@ -13,7 +13,7 @@ form{
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    background-color: rgb(220 244 245 / 52%);
+    background-color: rgba(90, 234, 239, 0.771);
     padding: 3% 10%;
     border-radius: 25px;
     -webkit-border-radius: 25px;
@@ -46,7 +46,13 @@ button{
 }
 button:hover{
     cursor: pointer;
-    background-color: white;
+    background-color: rgb(235, 144, 144);
     color: black;
-    border:1px solid black;
+    /* border:1px solid black; */
+}
+.modal{
+    position: absolute;
+    background-color:rgba(255, 255, 255, 0.683) ;
+    top:5%;
+   
 }

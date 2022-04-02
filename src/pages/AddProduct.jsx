@@ -1,6 +1,8 @@
 import "../styles/addProductForm.css";
 import { useState,useRef } from "react";
 const AddProduct = () => {
+      let url="https://infinite-sands-08332.herokuapp.com";
+    // let url="http://localhost:9000";
     const [productName, setproductName] = useState("");
     const [productType, setproductType] = useState("");
     const [category, setCategory] = useState("");
@@ -20,7 +22,7 @@ const AddProduct = () => {
         data.append("category", category);
         data.append("image", image);
         console.log(data);
-        fetch("https://infinite-sands-08332.herokuapp.com/addProduct", {
+        fetch(`${url}/addProduct`, {
             method: "POST",
             body:data
             }).then((res) => {
