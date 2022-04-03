@@ -1,0 +1,20 @@
+.ocolumn{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+.ocolumn h4{
+    padding: 0;
+    margin: 0;
+}
+.orow{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid lightblue;
+    background-color: rgba(173, 216, 230, 0.543);
+    padding: 2%;
+    margin: 2% 0;
+}

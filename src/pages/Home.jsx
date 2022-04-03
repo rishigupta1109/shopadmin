@@ -9,6 +9,7 @@ export default function Home() {
             <Link to="/addProduct">Add Product</Link>
             <Link to="/inventory">Inventory</Link>
             <Link to="/usersPage">Users Page</Link>
+            <Link to="/orders">Orders Page</Link>
         </div>
     </div>
   )
