@@ -1,7 +1,9 @@
 import React ,{useState,useEffect} from 'react'
 import { useParams } from 'react-router-dom';
-//  let url="https://infinite-sands-08332.herokuapp.com";
-    let url="http://localhost:9000";
+import Navbar from '../components/navbar';
+import "../styles/orderDetails.css"
+ let url="https://infinite-sands-08332.herokuapp.com";
+    // let url="http://localhost:9000";
 export default function OrderDetail() {
        const [orders,setOrders]=useState([]);
        const [edit,setedit]=useState(false);
@@ -18,7 +20,7 @@ export default function OrderDetail() {
         order.products.map((value) => {
           totalprice += value.discountedPrice * value.quantity;
         })
-         let url="https://infinite-sands-08332.herokuapp.com";
+        //  let url="https://infinite-sands-08332.herokuapp.com";
     // let url="http://localhost:9000";
   const saveHandler=()=>{
       fetch(`${url}/updateStatus`,{
@@ -30,10 +32,17 @@ export default function OrderDetail() {
       }).then(res=>res.json()).then(data=>{console.log(data);setedit(false)}).catch(err=>console.log(err));
   }
   return (
-    <div>
-        <div>{order.name}</div>
-        <div>{order.phone}</div>
-        <div>{order.email}</div>
+    <div style={{textAlign:'center'}}>
+    <Navbar></Navbar>
+    <h1>Order Detail</h1>
+    <div className='orow'>
+        <div>Customer Name: {order.name}</div>
+        <div>Phone no. : {order.phone}</div>
+        <div>Email ID : {order.email}</div>
+    </div>
+    <div className='orow'>
+        <div>Delivery Option : {order.deliverOption}</div>
+        <div>Status : {order.status}</div>
         {edit&&order.deliverOption==="Pickup"&&<select onChange={(e)=>{setstatus(e.target.value)}}>
           <option>PLACED</option>
           <option>READY</option>
@@ -45,15 +54,18 @@ export default function OrderDetail() {
           <option>ONWAY</option>
           <option>DELIVERED</option>
         </select>}
-        <div>{order.status}</div>
-        <div>{order.address}</div>
-        <div>{order.deliverOption}</div>
-       {!edit&& <button onClick={()=>{setedit(true)}}>edit</button>}
-      {edit && <button onClick={saveHandler}>save</button>}
-        <div>{order.note}</div>
-
-        <div>{new Date(order.date).getDate()}-{new Date(order.date).getMonth()}-{new Date(order.date).getFullYear()}</div>
-        <div>time:{new Date(order.date).getHours()}:{new Date(order.date).getMinutes()} </div>
+       {!edit&& <button onClick={()=>{setedit(true)}}>Edit Status</button>}
+       {order.deliverOption!=="Pickup"&& <div>Address : {order.address}</div>}
+      {edit && <button onClick={saveHandler}>Save Status</button>}
+      {edit && <button onClick={()=>{setedit(false)}}>close</button>}
+    </div>
+    
+    <div className='orow'>
+        {order.note.trim().length!==0&&<div>Note : {order.note}</div>}
+        <div>Date : {new Date(order.date).getDate()} - {new Date(order.date).getMonth()} - {new Date(order.date).getFullYear()}</div>
+        <div>time : {new Date(order.date).getHours()} : {new Date(order.date).getMinutes()} </div>
+    </div>
+    <h2>PRODUCTS</h2>
         <table>
         <thead>
           <tr>

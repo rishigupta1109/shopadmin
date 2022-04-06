@@ -3,6 +3,7 @@ import { useState,useEffect } from "react";
 import Modal from "./Modifyingmodal";
 import editicon from "../assets/editicon.png";
 import ImgModal from "./ImgModal";
+import Navbar from "../components/navbar";
 const Inventory = () => {
     const [Data, setData] = useState([]);
     const [modal,setModal]=useState(false);
@@ -46,6 +47,7 @@ const Inventory = () => {
     }
     return (
         <div>
+        <Navbar></Navbar>
         {modal&&<Modal data={modaldata} closeModal={setModal}></Modal>}
         {imgmodal&&<ImgModal data={modaldata} closeModal={setimgModal}></ImgModal>}
         <div className="inventorypage">
@@ -57,13 +59,13 @@ const Inventory = () => {
                                 <th>
                                     Image
                                 </th>
-                                <th>Product Name </th>
-                                <th>category</th>
-                                <th>Product Type</th>
-                                <th>Price</th>
+                              
+                                {/* <th>category</th> */}
+                                {/* <th>Product Type</th> */}
+                                {/* <th>Price</th> */}
                                 <th>Discounted Price</th>
                                 <th>Stock</th>
-                                <th></th>
+                                <th>action</th>
                             </tr>
                     </thead>
                     <tbody>
@@ -73,13 +75,17 @@ const Inventory = () => {
                         return (
                             <tr key={data.id}> 
                                 <td key={data.id}>
+                                <div style={{display:'flex',flexDirection:'column'}}>
+                                    <div style={{display:'flex',flexDirection:'row'}}>
                                     <img src={url} alt="product" />
                                     <img data-idx={index} className="editicon" onClick={imageModalHandler} src={editicon}></img>
+                                    </div>
+                               {data.productName }
+                                </div>
                                 </td>
-                                <td key={data.id}>{data.productName }</td>
-                                <td key={data.id}>{data.category.map((cat)=>{return <span>{cat} </span>}) }</td>
-                                <td key={data.id}>{data.productType }</td>
-                                <td key={data.id}>{data.price }</td>
+                                {/* <td key={data.id}>{data.category.map((cat)=>{return <span>{cat} </span>}) }</td> */}
+                                {/* <td key={data.id}>{data.productType }</td> */}
+                                {/* <td key={data.id}>{data.price }</td> */}
                                 <td key={data.id}>{data.discountedPrice }</td>
                                 <td key={data.id}>{data.stock }</td>
                                 <td><button data-idx={index} onClick={modalHandler}>Edit</button></td>

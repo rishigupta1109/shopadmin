@@ -13,7 +13,7 @@ form{
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    background-color: rgba(90, 234, 239, 0.771);
+    border:1px solid black;
     padding: 3% 10%;
     border-radius: 25px;
     -webkit-border-radius: 25px;
@@ -31,10 +31,10 @@ form{
 }
 
 input{
-    padding: 2% 3%;
+    padding: 2% 2%;
     border-radius: 10px;
     font-size: 15px;
-    border: none;
+    border: 1px solid black;
 }
 button{
     border-radius: 10px;
@@ -46,7 +46,7 @@ button{
 }
 button:hover{
     cursor: pointer;
-    background-color: rgb(235, 144, 144);
+    background-color: rgb(29, 190, 244);
     color: black;
     /* border:1px solid black; */
 }
@@ -54,5 +54,4 @@ button:hover{
     position: absolute;
     background-color:rgba(255, 255, 255, 0.683) ;
     top:5%;
-   
 }

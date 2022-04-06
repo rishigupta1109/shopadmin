@@ -1,5 +1,6 @@
 import "../styles/addProductForm.css";
 import { useState,useRef } from "react";
+import Navbar from './../components/navbar';
 const AddProduct = () => {
       let url="https://infinite-sands-08332.herokuapp.com";
     // let url="http://localhost:9000";
@@ -34,15 +35,17 @@ const AddProduct = () => {
             })
     }
     return (
+        <div>
+        <Navbar></Navbar>
         <div className="addproductpage">
             <h1>Add a Product</h1>
             <form onSubmit={submitHandler}>
                 <div className="row">
-                    <label htmlFor="productName">Product Name :</label>
+                    <label htmlFor="productName">Product Name:</label>
                     <input value={productName} onChange={(e)=>{setproductName(e.target.value)}}  type="text" id="productName"/>
                 </div>
                 <div className="row">
-                    <label htmlFor="productName">Category :</label>
+                    <label htmlFor="productName">Category:</label>
                     <input value={category} onChange={(e)=>{setCategory(e.target.value)}}  type="text" id="category"/>
                 </div>
                 <div className="row">
@@ -62,12 +65,14 @@ const AddProduct = () => {
                     <input  value={stock} onChange={(e)=>{setStock(e.target.value)}} type="number" id="stock"/>
                 </div>
                 <div className="row">
+                    <label htmlFor="image">Product Image:</label>
                     <input type="file" id="image" ref={images} />
                 </div>
                 <div className="row">
                     <button>Add</button>
                 </div>
             </form>
+        </div>
         </div>
     );
 }

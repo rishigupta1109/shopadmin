@@ -13,6 +13,8 @@ function Modal({data,closeModal}) {
     // let url="http://localhost:9000";
     const submitHandler=(e)=>{
         e.preventDefault();
+        const bool=window.confirm('are you sure?');
+        if(!bool) return;
         fetch(`${url}/modifyProduct`,{
             method:"POST",
             headers: {
@@ -30,7 +32,7 @@ function Modal({data,closeModal}) {
             }) 
         }).then(res=>{
             res.json().then(result=>{
-                alert(result);
+                alert("successfully modified");
                 closeModal(false);
             })
         }).catch(err=>{
@@ -38,6 +40,8 @@ function Modal({data,closeModal}) {
         })
     }
     const deleteone=()=>{
+        const bool=window.confirm('are you sure?');
+        if(!bool) return;
         fetch(`${url}/deleteProduct`,{
             method:"POST",
             headers: {
@@ -55,7 +59,7 @@ function Modal({data,closeModal}) {
             }) 
         }).then(res=>{
             res.json().then(result=>{
-                alert(result);
+                alert("successfully deleted");
                 closeModal(false);
             })
         }).catch(err=>{
@@ -93,7 +97,7 @@ function Modal({data,closeModal}) {
                 </div>
                 
                 <div className="row">
-                    <button type='submit'>Add</button>
+                    <button type='submit'>Edit</button>
                     <button onClick={deleteone}>remove</button>
                     <button onClick={()=>{closeModal(false);}}>close</button>
                 </div>

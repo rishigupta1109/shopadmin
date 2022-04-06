@@ -1,5 +1,6 @@
 import "../styles/UsersPage.css";
 import { useState,useEffect } from "react";
+import Navbar from './../components/navbar';
 const UsersPage = () => {
     const [Data, setData] = useState([]);
     const fetchData = async () => {
@@ -12,10 +13,12 @@ const UsersPage = () => {
         
     }
     useEffect(fetchData, []);
-    
     return (
+        <div>
+
+        <Navbar></Navbar>
         <div className="userpage">
-                <h1>Users</h1>
+                <h1>Customer detail</h1>
             {Data.length !== 0 &&
                 <table>
                     <tr>
@@ -37,6 +40,7 @@ const UsersPage = () => {
                     })}
                 </table>
            }
+        </div>
         </div>
     )
 }

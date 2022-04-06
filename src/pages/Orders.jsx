@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react';
 import "../styles/Orders.css";
 import {useNavigate} from "react-router-dom"
+import Navbar from './../components/navbar';
 // {
 //         "_id": "6219c6377032a4ce1d027664",
 //         "userID": "62123147d291463517807d3d",
@@ -34,8 +35,8 @@ import {useNavigate} from "react-router-dom"
 //         "status": "PLACED",
 //         "__v": 0
 //     }
-//  let url="https://infinite-sands-08332.herokuapp.com";
-    let url="http://localhost:9000";
+ let url="https://infinite-sands-08332.herokuapp.com";
+    // let url="http://localhost:9000";
 export default function Orders({set}) {
     const navigate=useNavigate();
     const [orders,setOrders]=useState([]);
@@ -43,8 +44,9 @@ export default function Orders({set}) {
         fetch(`${url}/getallorders`).then((res)=>res.json()).then(data=>{setOrders(data.reverse());}).catch(err=>{console.log(err)});
     },[]);
   return (
-    <div>
-        <div>All Orders</div>
+    <div style={{textAlign:'center'}}>
+    <Navbar></Navbar>
+        <h1>All Orders</h1>
         {
          orders.length!==0&&   orders.map((order)=>{
                 let totalprice = 0;
